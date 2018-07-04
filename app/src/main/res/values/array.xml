@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="ipt_array">
+        <item>黃色</item>
+        <item>綠色</item>
+        <item>藍色</item>
+        <item>棕色</item>
+        <item>紅色</item>
+    </array>
+</resources>
