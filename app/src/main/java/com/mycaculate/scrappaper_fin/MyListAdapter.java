@@ -1,6 +1,7 @@
 package com.mycaculate.scrappaper_fin;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,27 +17,25 @@ public class MyListAdapter extends BaseAdapter {
     TextView showDate,showText;
     LinearLayout color_layout;
     //資料庫的數據
-    MySQLAdapter mySQLAdapter;
-    String[] scrap_date;
-    String[] scrap_text;
-    String[] scrap_ipt;
+    Cursor cursor;
+    String[] data;
+    int[] to;
 
-
-    public MyListAdapter(Context context,String[] scrap_date,String[] scrap_text,String[] scrap_ipt) {
+    public MyListAdapter(Context context, Cursor cursor, String[] data, int[] to) {
         this.context = context;
-        this.scrap_date = scrap_date;
-        this.scrap_text = scrap_text;
-        this.scrap_ipt = scrap_ipt;
+        this.cursor = cursor;
+        this.data = data;
+        this.to = to;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return cursor.getCount();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return 0;
     }
 
     @Override
@@ -54,26 +53,7 @@ public class MyListAdapter extends BaseAdapter {
         showText = view.findViewById(R.id.showText);
         color_layout = view.findViewById(R.id.color_layout);
         //第三步，獲取資料庫的資料
-        mySQLAdapter = new MySQLAdapter(context);
-        showDate.setText(scrap_date[position]);
-        showText.setText(scrap_text[position]);
-        switch (scrap_ipt[position]){
-            case "yellow":
-                color_layout.setBackgroundResource(R.mipmap.scrap_yellow);
-                break;
-            case "green":
-                color_layout.setBackgroundResource(R.mipmap.scrap_green);
-                break;
-            case "blue":
-                color_layout.setBackgroundResource(R.mipmap.scrap_blue);
-                break;
-            case "brown":
-                color_layout.setBackgroundResource(R.mipmap.scrap_brown);
-                break;
-            case "red":
-                color_layout.setBackgroundResource(R.mipmap.scrap_red);
-                break;
-        }
+
 
         return view;
     }

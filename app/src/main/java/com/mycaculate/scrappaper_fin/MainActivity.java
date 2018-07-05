@@ -44,17 +44,20 @@ public class MainActivity extends AppCompatActivity {
     }
     public void displayList(){
         Cursor cursor = mySQLAdapter.list_scraps();
-        int cur_num = cursor.getCount();
-        if (cur_num !=0){
-            cursor.moveToFirst();
-            for(int i =0; i<cur_num; i++){
-                scrap_date[i] = cursor.getString(1);
-                scrap_text[i]=cursor.getString(2);
-                scrap_ipt[i] = cursor.getString(3);
-                cursor.moveToNext();
-            }
-        }
-        myListAdapter = new MyListAdapter(this,scrap_date,scrap_text,scrap_ipt);
+        String[] columns = {
+                mySQLAdapter.SCRAP_DATE,
+                mySQLAdapter.TEXT,
+                mySQLAdapter.IPT
+        };
+        int[] to = {
+                R.id.showDate,
+                R.id.showText,
+                R.id.color_layout
+        };
+
+
+        myListAdapter = new MyListAdapter(this, cursor,columns,to);
+
         listView.setAdapter(myListAdapter);
     }
     @Override
