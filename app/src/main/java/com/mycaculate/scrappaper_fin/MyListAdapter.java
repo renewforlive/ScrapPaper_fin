@@ -17,35 +17,33 @@ public class MyListAdapter extends BaseAdapter {
     TextView showDate,showText;
     LinearLayout color_layout;
     //資料庫的數據
-    Cursor cursor;
-    String[] data;
-    int[] to;
+    ArrayList<Scrap> arrayList;
 
-    public MyListAdapter(Context context, Cursor cursor, String[] data, int[] to) {
+    public MyListAdapter(Context context, ArrayList<Scrap> arrayList) {
         this.context = context;
-        this.cursor = cursor;
-        this.data = data;
-        this.to = to;
+        this.arrayList = arrayList;
     }
 
     @Override
     public int getCount() {
-        return cursor.getCount();
+        return arrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return 0;
+        return arrayList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return arrayList.indexOf(getItem(position));
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //第一步，將layout灌入context
+        //第一步，取得位置
+        Scrap scrap  = (Scrap)getItem(position);
+        //第二步，將layout灌入context
         inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.scrap_item,null);
         //第二步，取得layout中的資料
@@ -53,8 +51,23 @@ public class MyListAdapter extends BaseAdapter {
         showText = view.findViewById(R.id.showText);
         color_layout = view.findViewById(R.id.color_layout);
         //第三步，獲取資料庫的資料
-
-
+        showDate.setText(scrap.getScrap_date());
+        showText.setText(scrap.getScrap_text());
+        if (scrap.getScrap_ipt().equals("yellow")){
+            color_layout.setBackgroundResource(R.mipmap.scrap_yellow);
+        }
+        else if(scrap.getScrap_ipt().equals("green")){
+            color_layout.setBackgroundResource(R.mipmap.scrap_green);
+        }
+        else if(scrap.getScrap_ipt().equals("blue")){
+            color_layout.setBackgroundResource(R.mipmap.scrap_blue);
+        }
+        else if(scrap.getScrap_ipt().equals("brown")){
+            color_layout.setBackgroundResource(R.mipmap.scrap_brown);
+        }
+        else if(scrap.getScrap_ipt().equals("red")){
+            color_layout.setBackgroundResource(R.mipmap.scrap_red);
+        }
         return view;
     }
 }

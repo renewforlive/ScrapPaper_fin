@@ -20,6 +20,7 @@ import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class EditScrap extends AppCompatActivity implements View.OnClickListener{
     TextView showTitle;
@@ -41,6 +42,7 @@ public class EditScrap extends AppCompatActivity implements View.OnClickListener
         initView();
         initClick();
         mySQLAdapter = new MySQLAdapter(this);
+
         intent = new Intent();
         bundle = this.getIntent().getExtras();
         if(bundle.getString("type").equals("edit")){
@@ -51,8 +53,8 @@ public class EditScrap extends AppCompatActivity implements View.OnClickListener
         }
         //設定時間
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");
-        formatter.getTimeZone();
-        Date curDate = new Date(System.currentTimeMillis()) ;
+        formatter.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
+        Date curDate = new Date(System.currentTimeMillis());
         scrap_date = formatter.format(curDate);
 
         //設定顏色
@@ -107,6 +109,7 @@ public class EditScrap extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_ok:
+                scrap_text = edtText.getText().toString();
                 if (bundle.getString("type").equals("add")){
                     try{
                         mySQLAdapter.add_scraps(scrap_date,scrap_text,scrap_ipt);
