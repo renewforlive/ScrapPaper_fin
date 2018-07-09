@@ -11,7 +11,7 @@ public class MySQLHelper extends SQLiteOpenHelper {
     public static final String IPT = "ipt";
 
     private static final String DATABASE_NAME = "SCRAP_DB";
-    private static final String TABLE_NAME = "scrap_table";
+    private static final String TABLE_NAME = "scrap";
     private static final int DATABASE_VERSION = 1;
 
     public MySQLHelper(Context context) {

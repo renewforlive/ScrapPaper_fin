@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/woodgradient">
 
     <TextView
         android:id="@+id/showTitle"
@@ -34,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:text="選擇顏色:"
-        android:textSize="30dp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtText" />
 
@@ -45,18 +45,18 @@
         android:layout_width="183dp"
         android:layout_height="33dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/edtText" />
 
     <Button
-        android:id="@+id/btn_alert"
-        android:layout_width="176dp"
+        android:id="@+id/btn_alertDate"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="提醒時間"
-        android:textSize="18sp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="20dp"
+        android:text="提醒日期"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -83,13 +83,34 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/alertDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
+        android:text="Date"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/btn_alertDate"
+        app:layout_constraintTop_toBottomOf="@+id/color_spinner" />
+
+    <Button
+        android:id="@+id/btn_alertTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
+        android:text="提醒時間"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_alertDate" />
+
+    <TextView
+        android:id="@+id/alertTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="28dp"
         android:text="Time"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/btn_alert"
-        app:layout_constraintTop_toBottomOf="@+id/color_spinner" />
+        app:layout_constraintStart_toEndOf="@+id/btn_alertTime"
+        app:layout_constraintTop_toBottomOf="@+id/alertDate" />
 </android.support.constraint.ConstraintLayout>

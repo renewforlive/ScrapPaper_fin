@@ -16,7 +16,7 @@ public class MySQLAdapter {
     private MySQLHelper mySQLHelper;
     private SQLiteDatabase mdb;
     private final Context mCtx;
-    private static final String TABLE_NAME = "scrap_table";
+    private static final String TABLE_NAME = "scrap";
     private Intent i;
     private ContentValues values;
 

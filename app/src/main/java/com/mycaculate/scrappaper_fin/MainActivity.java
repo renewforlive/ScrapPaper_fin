@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
     MyListAdapter myListAdapter;
     MySQLAdapter mySQLAdapter;
     ArrayList<Scrap> arrayList;
-    String[] scrap_date, scrap_text, scrap_ipt;
+    String date, text, ipt;
+    int index;
+    Scrap scrap;
 
 
     @Override
@@ -51,15 +53,17 @@ public class MainActivity extends AppCompatActivity {
     }
     public void displayList(){
         Cursor cursor = mySQLAdapter.list_scraps();
+        cursor.moveToFirst();
         do{
-            int index = cursor.getInt(0);
-            String date = cursor.getString(1);
-            String text = cursor.getString(2);
-            String ipt = cursor.getString(3);
-            Scrap scrap = new Scrap(index, date, text, ipt);
+            index = cursor.getInt(0);
+            date = cursor.getString(1);
+            text = cursor.getString(2);
+            ipt = cursor.getString(3);
+            scrap = new Scrap(index, date, text, ipt);
             arrayList.add(scrap);
         }
         while (cursor.moveToNext());
+
         myListAdapter = new MyListAdapter(this,arrayList);
 
         listView.setAdapter(myListAdapter);
