@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public void displayList(){
         Cursor cursor = mySQLAdapter.list_scraps();
         cursor.moveToFirst();
-        do{
+        while (cursor.moveToNext()) {
             index = cursor.getInt(0);
             date = cursor.getString(1);
             text = cursor.getString(2);
@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             scrap = new Scrap(index, date, text, ipt);
             arrayList.add(scrap);
         }
-        while (cursor.moveToNext());
 
         myListAdapter = new MyListAdapter(this,arrayList);
 
